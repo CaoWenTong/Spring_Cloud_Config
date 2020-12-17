@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: member-feign #服务名称
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+#Eureka 注册
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:8761/eureka/
+
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+server:
+  port: 8081
+
+
+hystrix:
+  command:
+    default:  #default全局有效，service id指定应用有效
+      execution:
+        timeout:
+          #如果enabled设置为false，则请求超时交给ribbon控制,为true,则超时作为熔断根据
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 4000 #断路器超时时间，默认1000ms
+member:
+  userName: aaa
