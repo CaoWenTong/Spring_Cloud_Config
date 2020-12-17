@@ -37,4 +37,4 @@ hystrix:
           #thread:
             #timeoutInMilliseconds: 4000 #断路器超时时间，默认1000ms
 member:
-  userName: aaa
+  userName: qwer
